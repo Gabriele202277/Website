@@ -191,27 +191,38 @@
       background-color: rgba(0, 0, 0, 0.8); /* Adjust this to match your background image */
   }
 
-  /* Navbar links color change for visibility over the background image */
+  /* Ensure the navbar links are fully opaque */
   .navbar .nav-link {
-      color: white;
-      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 1) !important; /* Fully opaque white */
+      font-size: 1.0rem;
+      transition: color 0.3s ease-in-out;
+      padding-left: 10px; /* Adjust these values to move closer to the edge */
+      padding-right: 10px;
+  }
+
+
+  .navbar-nav .nav-link {
+      padding-left: 20px; /* Adjust these values to move closer to the edge */
+      padding-right: 20px;
+  } 
+
+  .navbar.scrolled .nav-link {
+      color: rgba(255, 255, 255, 1) !important; /* Fully opaque white */
+      font-size: 1.0rem;
       transition: color 0.3s ease-in-out;
   }
 
-  .navbar.scrolled .nav-link {
-      color: #ffffff; /* You can change this to any color that stands out over the navbar color */
-  }
-
-  /* Navbar brand color change */
+  /* Ensure the navbar brand is also fully opaque */
   .navbar .navbar-brand {
-      color: white;
+      color: rgba(255, 255, 255, 1) !important; /* Fully opaque white */
       transition: color 0.3s ease-in-out;
   }
 
   .navbar.scrolled .navbar-brand {
-      color: #ffffff;
+      color: rgba(255, 255, 255, 1) !important; /* Fully opaque white */
+      transition: color 0.3s ease-in-out;
   }
-
+    
   /* Media query for responsive navbar collapsing */
   @media (max-width: 992px) {
       .navbar-collapse {
