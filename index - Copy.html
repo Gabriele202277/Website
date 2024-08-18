@@ -44,6 +44,8 @@
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
+      margin-left: auto;
+      margin-right: auto;
   }
 
   .hero p {
@@ -165,7 +167,8 @@
 
   /* CSS for Sticky Navbar */
   .navbar {
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds a shadow for depth */
+    box-shadow: none; /* Removes the shadow */
+    border: none; /* Ensures there's no border */
   }
 
 
@@ -238,7 +241,7 @@
   <div class="hero-overlay"></div>
   <div class="content">
       <h1>Welcome to My Portfolio</h1>
-      <p>Discover my projects, skills, and more about me. Let's embark on this journey together.</p>
+      <p>Discover my projects, skills, and more about me. </p>
   </div>
 </section>
 
@@ -402,7 +405,7 @@
 
 <!-- Sticky Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
+  <div class="container-fluid"> <!-- Changed from 'container' to 'container-fluid' -->
     <a class="navbar-brand" href="#home">Gabriele Mauro</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -428,6 +431,7 @@
     </div>
   </div>
 </nav>
+
 
 
 <!-- Bootstrap JS and dependencies (jQuery and Popper) -->
