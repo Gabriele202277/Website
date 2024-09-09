@@ -15,7 +15,7 @@
       position: relative;
       background-image: url('images/background/project1.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: center 70%;
       height: 40vh;
       display: flex;
       align-items: center;
@@ -62,43 +62,48 @@
       border-radius: 0;
   }
 
-  /* Additional CSS for About Section */
+  /* Additional CSS for Table */
 
-  .about-section {
-      text-align: center;
-      padding: 100px 0;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.8rem;
+    text-align: left;
   }
-  .about-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+
+  table th, table td {
+      padding: 12px;
+      border: 1px solid #ddd;
   }
-  .about-section img {
-      width: 200px; /* Adjust the size as needed */
-      height: 200px;
-      border-radius: 50%; /* Makes the image round */
-      margin-bottom: 20px;
+
+  table th {
+      background-color: #f4f4f4;
+      font-weight: bold;
   }
-  .about-section p {
-      color: #333;
+
+  table td {
+      background-color: #fff;
   }
+
 
   /* Additional CSS for Projects Section */
 
   .project-article {
       margin: 50px auto;
       max-width: 800px; /* Limit width to keep text readable */
-      font-family: Arial, sans-serif; /* Same font as 'about-section' */
       line-height: 1.6;
       padding: 20px;
   }
 
-  /* Block text styling with justified alignment */
+
+
   .project-article p {
-      font-size: 1.25rem; /* Adjusted to match the general size of 'about-section' */
-      color: #333; /* Same color as 'about-section' */
-      text-align: justify;
-      margin-bottom: 30px;
+    color: #333; /* Same color as 'about-section' */
+    text-align: justify;
+    margin-bottom: 30px;
   }
+
 
   .project-article p strong {
       font-weight: bold; /* Bold keywords */
@@ -254,8 +259,170 @@
     
   <!-- Block Text 1 -->
   <p>
-      This project was focused on exploring the application of <strong>machine learning</strong> in the field of earthquake engineering. The main goal was to develop models that could help in the <strong>damage assessment</strong> of structures following an earthquake. The project involved working with real-world data and deploying a combination of <strong>supervised learning</strong> techniques to achieve accurate predictions. 
+    This project was part of the Machine Learning and Data Mining course I took during my master’s program. The main goal was to develop supervised machine learning models to solve 
+    classification and regression tasks. My team and I decided to use a dataset from the UCI Machine Learning Repository, which data are results of a chemical analysis of wines grown 
+    in the same region in Italy but derived from three different cultivars. The dataset includes 178 records each with 13 features and 1 output class. The features are the measured quantities 
+    of 13 different constituents (e.g. Magnesium, Alcohol, Flavanoids etc.), while the output class corresponds to different origins of the wines, or cultivars. 
   </p>
+
+
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Type</th>
+        <th>Mean</th>
+        <th>Stand. Dev.</th>
+        <th>Median</th>
+        <th>Max</th>
+        <th>Min</th>
+        <th>Mode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Class</td>
+        <td>Discrete, Nominal</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Alcohol</td>
+        <td>Continuous, Ratio</td>
+        <td>13.00</td>
+        <td>0.81</td>
+        <td>13.05</td>
+        <td>14.83</td>
+        <td>11.03</td>
+        <td>13.05</td>
+      </tr>
+      <tr>
+        <td>Malic acid</td>
+        <td>Continuous, Ratio</td>
+        <td>2.34</td>
+        <td>1.11</td>
+        <td>1.865</td>
+        <td>5.8</td>
+        <td>0.74</td>
+        <td>1.73</td>
+      </tr>
+      <tr>
+        <td>Ash</td>
+        <td>Continuous, Ratio</td>
+        <td>2.37</td>
+        <td>0.27</td>
+        <td>2.36</td>
+        <td>3.23</td>
+        <td>1.36</td>
+        <td>2.30</td>
+      </tr>
+      <tr>
+        <td>Alcalinity of ash</td>
+        <td>Continuous, Ratio</td>
+        <td>19.49</td>
+        <td>3.33</td>
+        <td>19.5</td>
+        <td>30</td>
+        <td>10.6</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>Magnesium</td>
+        <td>Continuous, Ratio</td>
+        <td>99.74</td>
+        <td>14.24</td>
+        <td>98</td>
+        <td>162</td>
+        <td>70</td>
+        <td>88</td>
+      </tr>
+      <tr>
+        <td>Phenols</td>
+        <td>Continuous, Ratio</td>
+        <td>2.30</td>
+        <td>0.62</td>
+        <td>2.355</td>
+        <td>3.88</td>
+        <td>0.98</td>
+        <td>2.20</td>
+      </tr>
+      <tr>
+        <td>Flavanoids</td>
+        <td>Continuous, Ratio</td>
+        <td>2.03</td>
+        <td>1.00</td>
+        <td>2.135</td>
+        <td>5.08</td>
+        <td>0.34</td>
+        <td>2.03</td>
+      </tr>
+      <tr>
+        <td>Nonflavanoid phenols</td>
+        <td>Continuous, Ratio</td>
+        <td>0.36</td>
+        <td>0.12</td>
+        <td>0.34</td>
+        <td>0.66</td>
+        <td>0.13</td>
+        <td>0.26</td>
+      </tr>
+      <tr>
+        <td>Proanthocyanins</td>
+        <td>Continuous, Ratio</td>
+        <td>1.59</td>
+        <td>0.57</td>
+        <td>1.555</td>
+        <td>3.58</td>
+        <td>0.41</td>
+        <td>1.25</td>
+      </tr>
+      <tr>
+        <td>Color intensity</td>
+        <td>Continuous, Ratio</td>
+        <td>5.06</td>
+        <td>2.31</td>
+        <td>4.69</td>
+        <td>13</td>
+        <td>1.28</td>
+        <td>3.8</td>
+      </tr>
+      <tr>
+        <td>Hue</td>
+        <td>Continuous, Ratio</td>
+        <td>0.96</td>
+        <td>0.23</td>
+        <td>0.965</td>
+        <td>1.71</td>
+        <td>0.48</td>
+        <td>1.04</td>
+      </tr>
+      <tr>
+        <td>OD280/OD315</td>
+        <td>Continuous, Ratio</td>
+        <td>2.61</td>
+        <td>0.71</td>
+        <td>2.78</td>
+        <td>4</td>
+        <td>1.27</td>
+        <td>2.87</td>
+      </tr>
+      <tr>
+        <td>Proline</td>
+        <td>Continuous, Ratio</td>
+        <td>746.89</td>
+        <td>314.02</td>
+        <td>673.5</td>
+        <td>1680</td>
+        <td>278</td>
+        <td>680</td>
+      </tr>
+    </tbody>
+  </table>
+  
 
   <!-- Two images aligned vertically -->
   <div class="image-row">
