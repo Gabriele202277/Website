@@ -66,6 +66,7 @@
 
   .about-section {
       text-align: center;
+      font-family: Arial, sans-serif; /* Same font as 'about-section' */
       padding: 100px 0;
   }
   .about-section h2 {
@@ -96,9 +97,10 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow around the card */
   }
   .card-img-top {
-      max-height: 180px; /* Adjust this value to fit the image properly in the card */
-      object-fit: cover; /* This makes sure the image covers the area properly */
-  }
+    height: 180px; /* Fixed height */
+    width: 100%; /* Ensure the image takes the full width of the container */
+    object-fit: cover; /* Ensures the image covers the container, cropping if necessary */
+}
   .card-body {
       padding: 15px;
   }
@@ -257,7 +259,7 @@
 </head>
 <body>
 
-<section class="hero">
+<section id='hero' class="hero">
   <div class="hero-overlay"></div>
   <div class="content">
       <h1>Welcome to My Portfolio</h1>
@@ -288,8 +290,9 @@
         <div class="card">
           <img src="images/projects/1.jpg" class="card-img-top" alt="Project 1">
           <div class="card-body">
-            <h5 class="card-title">Supervised ML applied to Wine Dataset</h5>
-            <p class="card-text">This project was conducted as part of a course in my master's program. Its objective was to develop and deploy supervised machine learning models based on a selected dataset. </p>
+            <h5 class="card-title">Supervised Machine Learning applied to Wine Dataset</h5>
+            <p class="card-text">This project was conducted as part of a course in my master's program. Its objective was to develop and deploy supervised 
+              machine learning models to solve both regression and classification problems for a selected dataset. </p>
             <div style="margin-top: 39px;"></div> <!-- Add vertical space here, align all projects boex. Text of project 2 is longer, the boxes are not aligned, add white space to project 1 -->
             <a href="project1.html" class="btn btn-primary">Learn more</a>
             <a href="#" class="btn btn-secondary">GitHub</a>
@@ -303,7 +306,7 @@
           <div class="card-body">
             <h5 class="card-title">Nonlinear State Estimation via Machine Learning</h5>
             <p class="card-text">This project constitutes my Master's thesis and was conducted in collaboration with a fellow Civil Engineering student. 
-              The goal of this project was to apply machine learning models to earthquake engineering and structural damage assessment. </p>
+              The goal of this project was to apply machine learning models to earthquake engineering and structural damage assessment. The data used in the project was accelerational time series corresponding to seismic events.   </p>
             <a href="project2.html" class="btn btn-primary">Learn more</a>
             <a href="#" class="btn btn-secondary">GitHub</a>
           </div>
@@ -402,14 +405,14 @@
 <!-- Sticky Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid"> <!-- Changed from 'container' to 'container-fluid' -->
-    <a class="navbar-brand" href="#home">Gabriele Mauro</a>
+    <a class="navbar-brand" href="#hero">Gabriele Mauro</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#hero">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
