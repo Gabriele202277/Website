@@ -130,7 +130,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px auto; /* Centers the figure */
+    margin: 40px auto; /* Centers the figure */
   }
 
   .central-image img {
@@ -146,6 +146,45 @@
       color: #666; /* Optional: Adds a light gray color to the caption */
   }
 
+
+  .large-figure img {
+  max-width: 80%; /* Increase the image size to 150% of its normal width */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center the image */
+}
+
+.large-figure figcaption {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+  /* For 6 pcitures organized in 2 rows each with 3 pictures (2x3)*/
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+  gap: 0; /* Reduce vertical space between rows */
+  column-gap: 0px; /* Adjust horizontal space between grid items */
+  justify-items: center; /* Center the images in each grid cell */
+  margin-bottom: 40px; /* Add some space below the images */
+}
+
+.image-grid img {
+  max-width: 110%; /* Make sure the images fit within the grid cells */
+  height: auto;
+  margin: 0; /* Ensure no margin around images */
+  padding: 0; /* Ensure no padding around images */
+}
+
+
+
+figcaption {
+  grid-column: 1 / -1; /* This spans the caption across all columns */
+  text-align: center; /* Center the caption text */
+  font-weight: bold; /* Make the caption bold */
+  margin-top: 10px;
+}
 
 
   /* Additional CSS for Contact Section */
@@ -284,7 +323,7 @@
 
 
   <table border="1" cellpadding="10" cellspacing="0">
-  <caption>Table 1: statistics of the attributes in the Wine Dataset</caption>
+  <caption>Table 1: Statistics of the attributes in the Wine Dataset</caption>
   <thead>
         <tr>
           <th>Attribute</th>
@@ -443,15 +482,70 @@
 
   <p>  
     The dataset does not present missing values, nor corrupted data, or general data issues. However, the presence of outliers must be investigated. The method used for such purpose involves the z-score 
-    normalization of the dataset and the boxplot of the obtained standardized dataset (Figure 1). 
+    normalization of the dataset and the boxplots of the obtained standardized dataset (Figure 1). 
   </p>
 
   <figure class="central-image">
     <img src="images/project1/Boxplot.png" alt="Figure 1: boxplots of the z-score standardized attributes">
-    <figcaption>Figure 1: boxplots of the z-score standardized attributes</figcaption>
+    <figcaption>Figure 1: Boxplots of the z-score standardized attributes</figcaption>
   </figure>
 
+  <p>Main findings from the boxplots: </p>
+
+  <div style="margin-top: -30px;"></div>
+
+  <ul>
+    <li>Malic Acid, Ash, Alcalinity of Ash, Magnesium, Proanthocyanins, Color intensity and Hue present outliers;</li>
+    <li>the distribution of Alcohol, Ash, Alcalinity of Ash and Hue is close to a normal distribution;</li>
+    <li>Malic acid and Proline have a positive-skewed distribution.</li>
+  </ul>
+
+  <div style="margin-top: 40px;"></div>
+
+  <p>  
+    In order to investigate which attributes are more adequate to conduct a classification problem, it is worthwhile to plot the frequency of the 13 attributes.
+     The frequency distributions of the attributes are shown for each of the three different wine classes (Class 1, Class 2, and Class 3) to identify which attributes 
+     might be more useful for distinguishing between the different wine classes.
+  </p>
+
+  <div class="image-grid">
+      <img src="images/project1/frequency/frequency_Alcohol.png" alt="Alcohol Distribution">
+      <img src="images/project1/frequency/frequency_Flavanoids.png" alt="Flavanoids Distribution">
+      <img src="images/project1/frequency/frequency_Color intensity.png" alt="Color Intensity Distribution">
+      <img src="images/project1/frequency/frequency_Hue.png" alt="Hue Distribution">
+      <img src="images/project1/frequency/frequency_OD280 and OD315.png" alt="OD280 and OD315 Distribution">
+      <img src="images/project1/frequency/frequency_Proline.png" alt="Proline Distribution">
+      <figcaption>Figure 2: Most relevant attributes distributions for each wine class</figcaption>
+  </div>
   
+  <p>  
+    Figure 2 illustrates the distributions of those attributes with a clear separation between two classes at least. For example, in the plot for the Alcohol content, 
+    it is possible to see a division between Class 1 and Class 2 while the Flavanoinds content is able to distinguish Class 1 wines from those belonging to 
+    Class 3. Similar observations can be carried out for Color Intensity, Hue, OD280/OD315 and Proline.
+  </p>
+
+
+  <p>  
+    Another important aspect to consider is the correlation between the continuous attributes of the dataset. 
+  </p>
+
+  <figure class="central-image large-figure">
+    <img src="images/project1/Correlation.png" alt="Figure 3: Correlation matrix">
+    <figcaption>Figure 3: Correlation matrix</figcaption>
+  </figure>
+
+
+  <p>  
+    The correlation matrix reported in Figure 3 shows that the highest correlation values is obtained when the relation Phenols vs. Flavanoids is considered. Therefore, 
+    these are the attributes characterized from a relation with the highest tendency towards a linear relationship. 
+  </p>
+
+
+  <h2>Supervised learning</h2>
+
+  <h3>Classification</h3>
+
+  <h3>Regression</h3>
 
 
 
