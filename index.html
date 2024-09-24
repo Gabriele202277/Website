@@ -194,6 +194,35 @@
   }
 
 
+    /* CSS for Sticky Navbar */
+  .navbar {
+    box-shadow: none; /* Removes the shadow */
+    border: none; /* Ensures there's no border */
+  }
+
+  .navbar-warning {
+  color: #d4af37; /* Darker yellow color */
+  font-size: 1.0rem; /* Matches the font size of the links */
+  text-align: center; /* Centers the text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  /* Ensure warning text matches link style */
+  .warning-text {
+    color: #d4af37; /* A slightly darker yellow for better readability */
+    font-family: inherit; /* Inherits the font of the navigation links */
+  }
+
+
+  /* Warning image styling */
+  .navbar-warning img {
+    margin-right: 8px; /* Adds some space between the icon and text */
+  }
+
+
+
 
   /* Smooth scroll */
   html {
@@ -405,10 +434,26 @@
 <!-- Sticky Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid"> <!-- Changed from 'container' to 'container-fluid' -->
+
+    <!-- Brand Name -->
     <a class="navbar-brand" href="#hero">Gabriele Mauro</a>
+
+    <!-- Custom Flex-Grow Spacing Element -->
+    <div style="flex-grow: 0.3;"></div> <!-- Custom flex-grow value -->
+
+    <!-- Collapsible Toggle Button for Mobile View -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Centered Warning Message -->
+    <div class="navbar-warning mx-auto d-flex align-items-center">
+      <img src="icons/warning.png" alt="Warning" style="width: 20px; height: 20px; margin-right: 8px;">
+      <strong class="warning-text">Website under construction. I apologize for any inconvenience.</strong>
+    </div>
+
+    
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
