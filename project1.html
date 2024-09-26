@@ -81,7 +81,12 @@
 
   .project-article h2 {
     margin-top: 60px;
+    margin-bottom: 60px;
     
+  }
+
+  .project-article h3 {
+    margin-top: 60px;    
   }
 
 
@@ -114,12 +119,19 @@
     text-align: left;
   }
 
+   
+  .last-row {
+   border-top: 2px double #333; /* Double line on top of the last row */
+   font-weight: bold; /* Optional: Bold font for the last row */
+  }
+
   caption {
     caption-side: top; /* Ensure the caption is on top */
     text-align: center; /* Center the caption */
     font-weight: bold; /* Make the caption bold */
     padding: 10px 0; /* Add space around the caption */
     font-size: 1rem; 
+    color: #000;
   }
 
 
@@ -143,7 +155,6 @@
       font-size: 1rem;
       text-align: center;
       margin-top: 10px;
-      color: #666; /* Optional: Adds a light gray color to the caption */
   }
 
 
@@ -481,7 +492,7 @@ figcaption {
   </table>
 
   <p>  
-    The dataset does not present missing values, nor corrupted data, or general data issues. However, the presence of outliers must be investigated. The method used for such purpose involves the z-score 
+    The dataset does not present missing values, nor corrupted data, or general data issues. However, the presence of outliers was investigated. The method used for such purpose involves the z-score 
     normalization of the dataset and the boxplots of the obtained standardized dataset (Figure 1). 
   </p>
 
@@ -492,7 +503,7 @@ figcaption {
 
   <p>Main findings from the boxplots: </p>
 
-  <div style="margin-top: -30px;"></div>
+  <div style="margin-top: -35px;"></div>
 
   <ul>
     <li>Malic Acid, Ash, Alcalinity of Ash, Magnesium, Proanthocyanins, Color intensity and Hue present outliers;</li>
@@ -503,9 +514,9 @@ figcaption {
   <div style="margin-top: 40px;"></div>
 
   <p>  
-    In order to investigate which attributes are more adequate to conduct a classification problem, it is worthwhile to plot the frequency of the 13 attributes.
-     The frequency distributions of the attributes are shown for each of the three different wine classes (Class 1, Class 2, and Class 3) to identify which attributes 
-     might be more useful for distinguishing between the different wine classes.
+    In order to investigate which attributes are more adequate to conduct a classification problem, the frequency of the 13 attributes was plotted.
+    The frequency distributions of the attributes were plotted for each of the three different wine classes (Class 1, Class 2, and Class 3) to identify which attributes 
+    might be more useful for distinguishing between the different wine classes.
   </p>
 
   <div class="image-grid">
@@ -541,21 +552,278 @@ figcaption {
   </p>
 
 
-  <h2>Supervised learning</h2>
+
+  <h2>Regression</h2>
+
+  <p>  
+    The regression problem consisted of predicting the quantity of phenols given the amount of other constituents in a wine. The wine class (Class 1, 2 or 3) is a discrete attribute therefore, it was not taken into account 
+    for the regression. However, it could have been inputted into the models if it was transformed through 1-of-K encoding.
+  </p>
 
 
-  <h3>Regression</h3>
+  <p>  
+    To run the regression, two models were used: a linear regression (least-squared method) and a feed-forward artificial neural network. The models were developed in Python through Scikit-learn and PyTorch modules. 
+    Regularization was employed in both models to control overfitting. More in detail: 
+  </p>
 
-  <figure class="central-image">
-    <img src="images/project1/report2/error_plot.png" alt="Figure 4: Log-log plot train and test error vs regularization parameter">
-    <figcaption>Figure 4: Log-log plot train and test error vs regularization parameter</figcaption>
-  </figure>
+  <div style="margin-top: -30px;"></div>
+
+  <ul>
+    <li>For the regularization of the Linear Regression model, a regularization parameter (λ) was introduced. The trial values for λ ranged from 10<sup>-3</sup> to 10<sup>6</sup>.</li>
+    <li>The ANN consists of an input layer with 12 neurons, each corresponding to a constituent other than phenols (the target variable). It includes a singular hidden layer with a number of neurons h, where the
+       Hyperbolic Tangent Activation Function is used. The output layer contains a single neuron to predict the amount of phenols. The model was regularized by adjusting the number of neurons in the hidden layer,
+       considering networks with h equal to 3, 5 and 7.</li>
+  </ul>
+
+  <p>  
+    Two-layer cross-validation was used to tune the regularization parameters of the models and to estimate the generalized error. In addition to the two models previously introduced, a baseline model has been considered. 
+  </p>
+
+
+ <table>
+  <caption>Table 2: Two-layer cross-validation results for the regression problem </caption>
+  <tr>
+    <th>Fold index (i)</th>
+    <th>Baseline, E<sub>test,i</sub></th>
+    <th>Linear Regr, λ<sub>i</sub> </th>
+    <th>Linear Regr, E<sub>test,i</sub></th>
+    <th>ANN, h<sub>i</sub></th>
+    <th>ANN, E<sub>test,i</sub></th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>0.40</td>
+    <td>10</td>
+    <td>0.12</td>
+    <td>3</td>
+    <td>0.15</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>0.49</td>
+    <td>10</td>
+    <td>0.17</td>
+    <td>3</td>
+    <td>0.22</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>0.40</td>
+    <td>10</td>
+    <td>0.09</td>
+    <td>3</td>
+    <td>0.12</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>0.33</td>
+    <td>10</td>
+    <td>0.09</td>
+    <td>3</td>
+    <td>0.10</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>0.23</td>
+    <td>10</td>
+    <td>0.18</td>
+    <td>3</td>
+    <td>0.16</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>0.29</td>
+    <td>10</td>
+    <td>0.09</td>
+    <td>3</td>
+    <td>0.11</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>0.31</td>
+    <td>10</td>
+    <td>0.09</td>
+    <td>3</td>
+    <td>0.14</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>0.48</td>
+    <td>10</td>
+    <td>0.11</td>
+    <td>3</td>
+    <td>0.18</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>0.35</td>
+    <td>10</td>
+    <td>0.10</td>
+    <td>3</td>
+    <td>0.10</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>0.38</td>
+    <td>10</td>
+    <td>0.05</td>
+    <td>3</td>
+    <td>0.10</td>
+  </tr>
+  <tr class="last-row">
+    <td>E<sub>gen</sub></td>
+    <td>0.366</td>
+    <td>-</td>
+    <td>0.109</td>
+    <td>-</td>
+    <td>0.138</td>
+  </tr>
+</table>
+
+  
+  <p>  
+    Table 2 reports the best value of the regularization parameters and the correspondent test error in each fold. Moreover, in the last row, the mean generalized error is reported for each of the three models. 
+    It is clear that there is not too much difference in the performance of ANN and Linear Regression however, both models give better estimations when compared to the Baseline model. Additional comments:
+  </p>
+
+  <div style="margin-top: -30px;"></div>
+
+  <ul>
+    <li>The optimal value of the parameters (λ=10 and h=3) was selected by choosing the model with the lower test error in the inner layer of the two-layer cross-validation.</li>
+    <li>The Python script returned also the values of the weights for each of the models. It could be observed that the attribute with the highest weight was the quantity of flavonoids.
+       This was already expected considering the high correlation value between Phenols and Flavanoids shown in the correlation matrix (Figure 3).</li>
+  </ul>
+
+
+
+  <h2>Classification</h2>
+
+  <p>  
+    The target of the classification is the class of wine while the input attributes are the quantities of each of the 13 constituents. The wine classes are 3 however, 
+    in the present project the task was reduced to a binary classification problem. Among the three target categories, class 2 represents almost 40% of the total data, 
+    for that reason, it was decided to classify into class 2 and other classes (i.e. class 1 and class 3). Therefore, class 2 is represented by 1 and other classes by 0.
+  </p>
+
+  <p>  
+    The approach used for the classification problem is similar to that adopted for the regression problem. Therefore, two different models have been developed in Python and a two-layer cross-validation
+     was used to tune the regularization parameters of the models and to estimate the generalized error. The models used for the classification are: 
+  </p>
+
+  <div style="margin-top: -30px;"></div>
+
+  <ul>
+    <li>Logistic Regression with regularization parameter λ. The range of λ values used in the regularization are 0.01,  0.1,  1, and 10.</li>
+    <li>K-Nearest Neighbor that has been regularized on the number of neighbours K. The tested values for K range from 5 to 30. </li>
+  </ul>
+
+  <p>  
+    Table 3 reports the results of the two-layer cross-validation applied in the context of the classification problem.
+  </p>
 
 
 
 
-  <h3>Classification</h3>
+  
 
+  <table>
+    <caption>Table 3: Two-layer cross-validation results for the classification problem</caption>
+    <tr>
+      <th>Fold index (i)</th>
+      <th>Baseline, E<sub>test,i</sub></th>
+      <th>Logistic Regr, λ<sub>i</sub> </th>
+      <th>Logistic Regr, E<sub>test,i</sub></th>
+      <th>KNN, K<sub>i</sub></th>
+      <th>KNN, E<sub>test,i</sub></th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.61</td>
+      <td>0.1</td>
+      <td>0.22</td>
+      <td>5</td>
+      <td>0.17</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.44</td>
+      <td>0.1</td>
+      <td>0.00</td>
+      <td>5</td>
+      <td>0.06</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.39</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>5</td>
+      <td>0.06</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.17</td>
+      <td>10</td>
+      <td>0.17</td>
+      <td>5</td>
+      <td>0.06</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.17</td>
+      <td>1</td>
+      <td>0.11</td>
+      <td>5</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0.33</td>
+      <td>1</td>
+      <td>0.11</td>
+      <td>5</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0.50</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>5</td>
+      <td>0.11</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.39</td>
+      <td>0.1</td>
+      <td>0.00</td>
+      <td>5</td>
+      <td>0.06</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>0.41</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>5</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>0.59</td>
+      <td>1</td>
+      <td>0.18</td>
+      <td>5</td>
+      <td>0.12</td>
+    </tr>
+    <tr class="last-row">
+      <td>E<sub>gen</sub></td>
+      <td>0.400</td>
+      <td>-</td>
+      <td>0.079</td>
+      <td>-</td>
+      <td>0.064</td>
+    </tr>
+  </table>
   
 
 
